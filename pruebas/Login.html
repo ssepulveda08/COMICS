@@ -63,7 +63,19 @@
 	    		else{
 
 	    			if(user.contrasena == pcontrasena){
-	    				alert("Ingresoooooo");
+	    				sessionStorage.setItem("Nombreuser", user.contrasena);
+	    				sessionStorage.setItem("Roluser", user.rol);
+	    				if(user.rol == 1){
+	    					//alert("ADMIN");
+	    					location.href="admin.html";
+	    				}
+	    				else if (user.rol == 2){
+	    					//alert("Usuario ");
+	    					location.href="home.html";
+	    				}
+	    				else alert("Fallo");
+	    				
+	    				
 	    			}
 	    			else{
 	    				document.getElementById("loginf").reset();
