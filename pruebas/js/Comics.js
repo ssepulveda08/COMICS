@@ -32,7 +32,8 @@ function mostrarComics() {
 //metodo para buscar por nombre de comic en el array  "listcomics"
 function buscarComic(parm1) {
 	for( var i = 0 ;i<users.length;i++ ){
-		if(Listcomics[i].nombre == parm1){
+		var comii = Listcomics[i].nombre
+		if(comii.toUpperCase() == parm1.toUpperCase()){
 			return Listcomics[i];			
 		}
 	}
