@@ -25,7 +25,19 @@ function newUser(nombre, contrasena, correo, rol) {
 
 
 function mostrarUser() {
-	for( var i = 0 ;i<=users.length;i++ ){
+	for( var i = 0 ;i<users.length;i++ ){
 		console.log(users[i])
 	}
+}
+
+function buscarUser(parm1) {
+
+	for( var i = 0 ;i<users.length;i++ ){
+		if(users[i].correo == parm1){
+			return users[i];
+			
+		}
+	}
+	 return null ;
+
 }
