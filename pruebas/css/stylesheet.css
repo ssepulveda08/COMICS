@@ -4,7 +4,7 @@
     font-size:1em;
   }
   .bar-head {
-    width: 99%;
+    width: 98%;
     height: 10%;
     background: rgba(44, 152, 209, 0.9);
   }
@@ -12,6 +12,10 @@
     max-height: 72px;
     margin-left: 10px;
     margin-top: 10px; 
+  }
+  .divisor {
+    width: 99%;
+    max-height:  80px;
   }
    section {
     float: left;
@@ -35,8 +39,10 @@
   nav ul li {
     float:right;
     padding:3px 10px;
+    text-align: center;
+
     margin:2px;
-    background:#ccccff;
+    background:rgba(255, 255, 255, 0.3);
     -moz-border-radius:5px;-webkit-border-radius:5px;-o-border-radius:5px;border-radius:5px;
   }
   footer {
@@ -48,7 +54,7 @@
   /* para 980px o menos */
   @media screen and (max-width:1024px) {
     .container {
-      width:98%;
+      width:99%;
     }
     section {
       width:99%;
@@ -90,9 +96,10 @@
     }
   
     nav ul {
-      margin: auto;
+      margin: 5PX auto;
+
       margin-top: 72px;
-      width:70%;
+      width:99%;
     }
     nav ul li {
       float:none;

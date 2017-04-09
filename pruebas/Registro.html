@@ -17,22 +17,25 @@
 			
 		<nav>
 			<ul>
-				<li>menu 1</li>
-				<li>menu 2</li>
-				<li>menu 3</li>
-				<li>menu 4</li>
+				<li><a href="Login.html">Ingresar</a></li>
+				<li><a href="">Registro</a></li>
 			</ul>
 		</nav>		
 	</div>
 	<section>
+
+	<div class="divisor">
+		
+	</div>
 		<div class="fondo-login">
 			<div class="login-page">
 		  		<div class="form">
 		  			<h1>Comics DC</h1>
-		    		<form class="register-form" >
-				      <input type="text" placeholder="Nombre"/>
-				      <input type="password" placeholder="Contraseña"/>
-				      <input type="text" placeholder="Correo electronico"/>
+		    		<form class="register-form" id="formid" action="javascript:RegistrarUsuario()">
+				      <input type="text" id="nombre" required placeholder="Nombre"/>
+				      <input type="password" id="contrasena" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]{1,})(?=.*[0-9]{2,}).{8,}" title="El formato debe coincidir con 1 letra mayúscula, 2 números " placeholder="Contraseña"/>
+				      <input type="email" id="correo" required placeholder="Correo electronico"/>
+				      
 				      <button>Crear</button>
 				      <p class="message">Ya tienes una cuenta? <a href="Login.html">Ingresa</a></p>
 				    </form>
@@ -41,10 +44,23 @@
 		</div>
 	</section>
 	
-	 
-	  <script src='JS/jquery-3.2.0.min.JS'></script>
-
+	  	<script src='JS/jquery-3.2.0.min.JS'></script>
 	    <script src="js/index.js"></script>
+	    <script src="js/usuarios.js"></script>
+
+	    <script type="text/javascript">
+			function RegistrarUsuario() {
+				var pnombre = (document.getElementById("nombre").value);
+				var pcontrasena = (document.getElementById("contrasena").value);
+				var pcorreo = (document.getElementById("correo").value);
+
+				var usert = new newUser(pnombre,pcontrasena,pcorreo);
+				var usert2 = new  mostrarUser();
+				location.href="login.html";
+
+				
+			}
+		</script>
 	
 </div>
 </body>
