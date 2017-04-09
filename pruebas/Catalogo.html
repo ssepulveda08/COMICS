@@ -10,29 +10,21 @@
 	<link rel="stylesheet" type="text/css" href="css/catalogo.css">
 
 	<script src='JS/jquery-3.2.0.min.JS'></script>
-	<script src="js/Comics.js"></script>
+	
 	<script src="js/validarSession.js"></script>
-	<script  type="text/javascript">		
-		//var iniciar = new Validar_user();
+	<script  type="text/javascript">
+
+		var iniciar = new Validar_user();
 
 		var listComics = new getComics(); 
 		console.log(Math.ceil(listComics.length/3));
-
-		
-		
 
 		$(document).ready(function(){
 		    console.log("cargo")
 		    for(var i = 0; i<listComics.length;i++){
 		    	
 		    		$("#thumbnails").append('<div class="box" id="' + i + '"><a href="" class="image fit"><img id="image"src=" ' + listComics[i].url + ' " alt="" /></a><div class="inner"><h3 id="nombre">' + listComics[i].nombre + '</h3><h2 id="autor">Autor: ' + listComics[i].autor + '</h2><P id="descrip" class="descripcion">' + listComics[i].descripcion + '</p><button  class="button fit " onclick="javascript:mostrar(' +i+ ')" data-poptrox="">Detalles</button></div></div>');
-		    	
-
-			}
-
-
-			
-				    
+			}    
 		});
 		var mozillaPresente = false,
 				        mozilla = (function detectarNavegador(navegador) {
@@ -53,7 +45,7 @@
 				    function mostrar(e) {
 				    	$(document).ready(function(){
 				    		console.log(listComics[e].nombre);
-				    		
+
 				    		$("#cajacentrada").empty();
 				    		$("#cajacentrada").append('<h2>'+listComics[e].nombre+'</h2><p>'+listComics[e].descripcion+'</p> <button  class="button fit " onclick="javascript:ocultar()" data-poptrox="">Cerrar</button>');
 				    	});
@@ -71,6 +63,9 @@
 				        }
 				        });         
 				    }
+				    function salir(){
+				    	var salir = cerrarSesion();
+				    }
 				    $("a.mostrarmodal").click(mostrar);
 				    $("a.cerrarmodal").click(ocultar);
 		
@@ -86,8 +81,7 @@
 				
 			<nav>
 				<ul>
-					<li><a href="Login.html">Ingresar</a></li>
-					<li><a href="">Registro</a></li>
+					<li><a onclick="javascript:salir()">Salir</a></li>
 				</ul>
 			</nav>		
 		</div>

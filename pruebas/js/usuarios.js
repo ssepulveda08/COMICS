@@ -1,10 +1,3 @@
-
-	  //user.nombre = nombre;
-	  //user.contrasena = contrasena;
-	  //user.correo = correo;
-	  //user.rol = rol;
-	  //console.log(user)
-
  var users = [
 				{ nombre:"admin", contrasena:"admin",correo:"ADMIN",rol:"1"},
 				{ nombre:"user",contrasena:"user",correo:"USER", rol:"2"},
@@ -12,13 +5,16 @@
 
 
 function newUser(nombre, contrasena, correo, rol) {
-	
+	var userArray =JSON.parse(localStorage.getItem("Ausuarios"))
+	//console.log(userArray)
 		this.nombre = nombre;
 	  	this.contrasena = contrasena;
 		this.correo = correo.toUpperCase();
 		this.rol = rol;
 
-		users.push(this);				
+		userArray.push(this);
+
+	localStorage.setItem("Ausuarios", JSON.stringify(userArray));					
 }
 
 
@@ -28,15 +24,21 @@ function mostrarUser() {
 	}
 }
 
-function buscarUser(parm1) {
+function buscarUser(parm2,parm1) {
 
+	var userArray =JSON.parse(parm2)
 
-	for( var i = 0 ;i<users.length;i++ ){
-		if(users[i].correo == parm1.toUpperCase()){
-			return users[i];
+	console.log(parm2+''+parm1)
+	for( var i = 0 ;i<userArray.length;i++ ){
+		if(userArray[i].correo == parm1.toUpperCase()){
+			return userArray[i];
 			
 		}
 	}
 	 return null ;
 
+}
+
+function getUser(){
+	return users;
 }

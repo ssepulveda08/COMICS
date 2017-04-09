@@ -14,13 +14,16 @@
 
 //metodo para add un nuevo comic ala lista se utiliza la  funcion push para agregar un nuevo elemento al array 
 function NewComic(nombre,autor,fecha,descripcion,url){
+
+	var comicArray =JSON.parse(localStorage.getItem("Aproductos"));
 	this.nombre = nombre;
 	this.autor = autor;
 	this.fecha = fecha;
 	this.descripcion = descripcion;
 	this.url = url;
 
-	Listcomics.push(this);
+	comicArray.push(this);
+	localStorage.setItem("Aproductos", JSON.stringify(comicArray));
 }
 
 //metodo para mprimir todos los elemnetos que tenga el array Listcomics

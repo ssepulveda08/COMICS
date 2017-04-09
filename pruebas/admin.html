@@ -1,13 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 	<title>Administrador</title>
-	<script src="js/validarSession.js"></script>
-	<script  type="text/javascript">		
-		var iniciar = new Validar_admin();
-	</script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
+ 
 <body>
+ 
+<div class="container">
+	<div class="bar-head">
+		<div id="imagenes">			
+			<img  src="image/logo.png" >
+		</div>
+			
+		<nav>
+			<ul>
+				<li><a href="Login.html">Salir</a></li>
+				<li><a href="home.html">Catalogo</a></li>
+			</ul>
+		</nav>		
+	</div>
+	<section>
 
+	<div class="divisor">
+		
+	</div>
+		<div class="fondo-login">
+			<div class="login-page">
+		  		<div class="form">
+		  			<h1>New Comic</h1>
+		    		<form class="register-form" id="formid" action="javascript:RegistrarComic()">
+
+				      <input type="text" id="nombre" required placeholder="Nombre"/>
+				      <input type="text" id="autor" required  placeholder="Autor del Comic"/>
+				      <input type="text" id="fecha" required placeholder="Fecha de publicacion "/>
+				      <input type="text" id="ruta" required placeholder="Ruta de la imagen"/>
+				      <textarea id="descript" idname="descript" rows="10" cols="40">Descripcion 
+				      E.j:
+				      Labeled "The Mighty Pretenders" by an unforgiving public, Captain America redoubles his efforts to revive the Avengers' reputation - only to face an unbeatable foe.</textarea>
+				      <button>Crear</button>
+				    </form>
+				</div>
+			</div>		
+		</div>
+	</section>
+	
+	  	<script src='JS/jquery-3.2.0.min.JS'></script>
+	    <script src="js/index.js"></script>
+	    <script src="js/Comics.js"></script>
+
+	    <script type="text/javascript">
+
+			function RegistrarComic() {
+				var pnombre = (document.getElementById("nombre").value);
+				var pautor = (document.getElementById("autor").value);
+				var pfecha = (document.getElementById("fecha").value);
+				var pruta = (document.getElementById("ruta").value);
+				var pdescrip = (document.getElementById("descript").value);
+				
+				var comic = new NewComic(pnombre,pautor,pfecha,pruta,pdescrip);
+
+			}
+		</script>
+	
+</div>
 </body>
 </html>

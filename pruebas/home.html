@@ -1,13 +1,123 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Bienvenido</title>
+	<title>Catalogo</title>
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/catalogo.css">
+
+	<script src='JS/jquery-3.2.0.min.JS'></script>
+	<script src="js/Comics.js"></script>
 	<script src="js/validarSession.js"></script>
-	<script  type="text/javascript">		
+	<script  type="text/javascript">
+
 		var iniciar = new Validar_user();
+		console.log(iniciar);
+
+		var listComics = JSON.parse(localStorage.getItem("Aproductos"));
+		console.log(Math.ceil(listComics.length/3));
+
+		$(document).ready(function(){
+		    console.log("cargo")
+		    for(var i = 0; i<listComics.length;i++){
+		    	
+		    		$("#thumbnails").append('<div class="box" id="' + i + '"><a href="" class="image fit"><img id="image"src=" ' + listComics[i].url + ' " alt="" /></a><div class="inner"><h3 id="nombre">' + listComics[i].nombre + '</h3><h2 id="autor">Autor: ' + listComics[i].autor + '</h2><P id="descrip" class="descripcion">' + listComics[i].descripcion + '</p><button  class="button fit " onclick="javascript:mostrar(' +i+ ')" data-poptrox="">Detalles</button></div></div>');
+			}    
+		});
+		var mozillaPresente = false,
+				        mozilla = (function detectarNavegador(navegador) {
+				        if(navegador.indexOf("Firefox") != -1 ) {
+				            mozillaPresente = true;
+				        }   
+				    })(navigator.userAgent);
+
+		function darEfecto(efecto) {
+				        el = $('.cajainterna');
+				        el.addClass(efecto);
+				        el.one('webkitAnimationEnd oanimationend msAnimationEnd animationend',
+				        function (e) {
+
+				            el.removeClass(efecto);
+				        });
+				    }
+				    function mostrar(e) {
+				    	$(document).ready(function(){
+				    		console.log(listComics[e].nombre);
+
+				    		$("#cajacentrada").empty();
+				    		$("#cajacentrada").append('<h2>'+listComics[e].nombre+'</h2><p>'+listComics[e].descripcion+'</p> <button  class="button fit " onclick="javascript:ocultar()" data-poptrox="">Cerrar</button>');
+				    	});
+
+				    	console.log(e);
+				        $(".cajaexterna").show();
+				        darEfecto("bounceIn");      
+				    }
+				    function ocultar() {
+				        $(".cajaexterna").fadeOut("fast", function() {
+				            if(mozillaPresente) {
+				            setTimeout(function() {
+				                $(".cajainterna").removeClass("bounceIn");
+				            }, 5);
+				        }
+				        });         
+				    }
+				    function salir(){
+				    	var salir = cerrarSesion();
+				    }
+				    $("a.mostrarmodal").click(mostrar);
+				    $("a.cerrarmodal").click(ocultar);
+		
+
 	</script>
 </head>
 <body>
+	<div class="container">
+		<div class="bar-head">
+			<div id="imagenes">			
+				<img  src="image/logo.png" >
+			</div>
+				
+			<nav>
+				<ul>
+					<li><a href="">Ingresar</a></li>
+					<li><a href="Registro.html">Registro</a></li>	
+				</ul>
+			</nav>		
+		</div>
 
+		<section>
+		<div class="divisor">
+		
+		</div>
+
+			
+			<div class="fondo-login">
+				<div class="login-page" id="cont-cat">
+
+					<div class="thumbnails" id="thumbnails">
+
+	
+					</div>
+		        </div>
+		    </div>
+	
+		</section>
+
+		<div class="cajaexterna">
+		  <div class="cajainterna animated">
+		    <div class="cajacentrada" id="cajacentrada">
+
+		    	
+		        
+		       
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+	</div>
 </body>
 </html>

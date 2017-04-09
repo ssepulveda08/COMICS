@@ -10,10 +10,22 @@ function Validar_admin () {
 }
 
 function Validar_user () {
+	
 	console.log(sessionStorage.getItem("Roluser"));
-	if(sessionStorage.getItem("Roluser") == null){
+	if(!sessionStorage.getItem("Roluser"))  {
+		
 		location.href="login.html";
 	}
+	if(sessionStorage.getItem("Roluser").valueOf() == null)  {
+		
+		location.href="login.html";
+	}
+	if(sessionStorage.getItem("Roluser").valueOf() == "null")  {
+		
+		location.href="login.html";
+	}
+	
+	
 }
 
 function cerrarSesion() {

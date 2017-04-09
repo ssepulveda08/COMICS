@@ -46,14 +46,31 @@
 	  	<script src='JS/jquery-3.2.0.min.JS'></script>
 	    <script src="js/index.js"></script>
 	    <script src="js/usuarios.js"></script>
+	    <script src="js/Comics.js"></script>
 	    	
 	    	<script type="text/javascript">
 
+	    	if(!localStorage.getItem("Ausuarios")){
+	    		console.log("crear variables para almacenar array")
+
+		    	var Auser = new getUser();	
+		    	var Acomics = new getComics();
+		    	
+		    	localStorage.setItem("Ausuarios", JSON.stringify(Auser));
+		    	localStorage.setItem("Aproductos", JSON.stringify(Acomics));
+
+		    }
+
+
+
 	    	function validarDatos() {	    	
+
 				var pcontrasena = (document.getElementById("contrasena").value);
 				var pcorreo = (document.getElementById("correo").value);
 
-				var user = new buscarUser(pcorreo);	    		
+				var arrayuser = localStorage.getItem("Ausuarios");
+				var user = new buscarUser(arrayuser, pcorreo);	
+
 	    		console.log(user.contrasena);
 
 	    		if(!user.contrasena){
