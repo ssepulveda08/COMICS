@@ -11,7 +11,7 @@ function Validar_admin () {
 
 function Validar_user () {
 	console.log(sessionStorage.getItem("Roluser"));
-	if(sessionStorage.getItem("Roluser") != null){
+	if(sessionStorage.getItem("Roluser") == null){
 		location.href="login.html";
 	}
 }
