@@ -46,15 +46,25 @@ function mostrarComics() {
 
 //metodo para buscar por nombre de comic en el array  "listcomics"
 function buscarComic(parm1) {
-	for( var i = 0 ;i<users.length;i++ ){
-		var comii = Listcomics[i].nombre
-		if(comii.toUpperCase() == parm1.toUpperCase()){
-			return Listcomics[i];			
+
+	var resul = []
+	var count = 0;
+
+	var comicArray =JSON.parse(localStorage.getItem("Aproductos"));
+	for( var i = 0 ;i<comicArray.length;i++ ){
+		
+		var comii = comicArray[i].nombre.toUpperCase();
+		 var patt = new RegExp(parm1.toUpperCase());
+  		  var res = patt.test(comii);
+		//console.log(comii+"   "+patt)
+		if(res){
+			resul[count] = comicArray[i];
+			count = count+1;
+			//console.log("palabra ok ");
 		}
+
 	}
-	 return null ;
+	 return resul ;
 }
 
-function getComics(){
-	return Listcomics;
-}
+

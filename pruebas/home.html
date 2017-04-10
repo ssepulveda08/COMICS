@@ -67,6 +67,42 @@
 				    function salir(){
 				    	var salir = cerrarSesion();
 				    }
+				    function buscarXnombre(){
+				    console.log("buscar");
+				    	var nom = document.getElementById("inputBuscar").value;
+
+				    	var bus = new buscarComic(nom);
+				    	console.log(bus.length);
+
+				    	if (bus.length > 0){
+				    		$("#thumbnails").empty();
+				    		for(var i = 0; i<bus.length;i++){
+
+				    			
+				    			$("#thumbnails").append('<div class="box" id="' + i + '"><a href="" class="image fit"><img id="image"src=" ' + bus[i].url + ' " alt="" /></a><div class="inner"><h4 id="nombre">' + bus[i].nombre + '</h4><h4 id="autor">Autor: ' + bus[i].autor + '</h4><P id="descrip" class="descripcion">' + bus[i].descripcion + '</p><button  class="button fit " onclick="javascript:mostrar(' +i+ ')" data-poptrox="">Detalles</button><button  class="button fit " onclick="javascript:Editar('+i+')" data-poptrox="">Editar</button></div></div>');	
+				    			
+							} 
+				    	}
+				    	else{
+				    		alert("Nose encontro ninguna busqueda");
+				    	}
+
+				    	//document.getElementById('thumbnails').style.display = 'block';
+				    	//document.getElementById('busqueda').style.display = 'none';
+				    }
+				    function Limpiarbusqueda(){
+				    console.log("limpiar--")
+				    document.getElementById("inputBuscar").value = "";
+				    $("#thumbnails").empty();
+
+				    	for(var i = 0; i<listComics.length;i++){
+
+		    			
+					    		$("#thumbnails").append('<div class="box" id="' + i + '"><a href="" class="image fit"><img id="image"src=" ' + listComics[i].url + ' " alt="" /></a><div class="inner"><h4 id="nombre">' + listComics[i].nombre + '</h4><h4 id="autor">Autor: ' + listComics[i].autor + '</h4><P id="descrip" class="descripcion">' + listComics[i].descripcion + '</p><button  class="button fit " onclick="javascript:mostrar(' +i+ ')" data-poptrox="">Detalles</button><button  class="button fit " onclick="javascript:Editar('+i+')" data-poptrox="">Editar</button></div></div>');
+						}
+				    	
+				    }
+
 				    $("a.mostrarmodal").click(mostrar);
 				    $("a.cerrarmodal").click(ocultar);
 		
