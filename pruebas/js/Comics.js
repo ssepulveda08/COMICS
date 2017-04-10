@@ -9,7 +9,7 @@
 				{ nombre:"Marvels", autor:"Kurt Busiek",fecha:"Nueva York, 1985", descripcion:"¡La obra maestra absoluta que dio a conocer a Alex Ross (Tierra-X) y catapultó a la fama a Kurt Busiek (Los Vengadores)! Un recorrido por los grandes momentos que sirvieron para forjar el Universo Marvel bajo la visión única del fotógrafo Phil Sheldon. Desde los orígenes de los superhéroes a la muerte de Gwen Stacy, de la llegada de Galactus a la Guerra Kree-Skrull, de la irrupción de los mutantes a la boda de Reed Richards y Sue Storm… ¡Los Prodigios están aquí!", url:"image/comic07.jpg"},
 				{ nombre:"Death Note", autor:"Tsugumi Ohba",fecha:"Año 2000", descripcion:"Death Note supuso toda una revolución en el manga: el protagonista, tras encontrar un objeto mágico de inmenso poder, lo utiliza no para hacer el bien… sino para convertirse en el gobernante supremo del mundo.", url:"image/comic08.jpg"},
 				{ nombre:"The Boys", autor:"Garth Ennis",fecha:"Año - 1996", descripcion:"En un mundo en el que los superhéroes son unos degenerados corruptos controlados por una corporación, es necesario que alguien les mantenga a raya. Ese alguien son los miembros de The Boys , tipos duros y sin escrúpulos que han aceptado adquirir superpoderes para poder patear el culo de esos falsos superhéroes.", url:"image/comic09.jpg"},
-				{ nombre:"Watchmen - 2", autor:"Alan Moore",fecha:"Nueva York, 1985", descripcion:"El cruento asesinato de Edward Blake, el Comediante, deja tras de sí un smiley manchado de sangre y moviliza a los pocos justicieros que aún viven. Uno de los más resolutivos e implacables, Rorschach (Walter J. Kovacs), emprende una investigación que le hará reencontrarse con el desengañado Búho Nocturno (Dan Dreiberg), el poderoso Dr. Manhattan (Jon Osterman), el multimillonario Ozymandias, considerado“el hombre más listo del mundo” (Adrian Veidt), y la renuente y atormentada Espectro de Seda (Laurie Juspeczyk). Juntos afrontarán un pasado terrible, bajo la sombra de los Minutemen, y tratarán de superarlo para salvar el futuro… si es que el fin, cada vez más cerca, no llega antes y destruye la Tierra por completo.", url:"image/comic01.jpg"}
+				{ nombre:"Watchmen - 2", autor:"Alan Moore",fecha:"Nueva York, 1985", descripcion:"El cruento asesinato de Edward Blake, el Comediante, deja tras de sí un smiley manchado de sangre y moviliza a los pocos justicieros que aún viven. Uno de los más resolutivos e implacables, Rorschach (Walter J. Kovacs), emprende una investigación que le hará reencontrarse con el desengañado Búho Nocturno (Dan Dreiberg), el poderoso Dr. Manhattan (Jon Osterman), el multimillonario Ozymandias, considerado“el hombre más listo del mundo” (Adrian Veidt), y la renuente y atormentada Espectro de Seda (Laurie Juspeczyk). Juntos afrontarán un pasado terrible, bajo la sombra de los Minutemen, y tratarán de superarlo para salvar el futuro… si es que el fin, cada vez más cerca, no llega antes y destruye la Tierra por completo.", url:"image/comic03.jpg"}
 			]
 
 //metodo para add un nuevo comic ala lista se utiliza la  funcion push para agregar un nuevo elemento al array 
@@ -23,6 +23,17 @@ function NewComic(nombre,autor,fecha,descripcion,url){
 	this.url = url;
 
 	comicArray.push(this);
+	localStorage.setItem("Aproductos", JSON.stringify(comicArray));
+}
+function UpdateComic(nombre,autor,fecha,descripcion,url,id){
+
+	var comicArray =JSON.parse(localStorage.getItem("Aproductos"));
+	comicArray[id].nombre = nombre;
+	comicArray[id].autor = autor;
+	comicArray[id].fecha = fecha;
+	comicArray[id].descripcion = descripcion;
+	comicArray[id].url = url;
+
 	localStorage.setItem("Aproductos", JSON.stringify(comicArray));
 }
 

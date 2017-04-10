@@ -24,7 +24,7 @@
 		    console.log("cargo")
 		    for(var i = 0; i<listComics.length;i++){
 		    	
-		    		$("#thumbnails").append('<div class="box" id="' + i + '"><a href="" class="image fit"><img id="image"src=" ' + listComics[i].url + ' " alt="" /></a><div class="inner"><h3 id="nombre">' + listComics[i].nombre + '</h3><h2 id="autor">Autor: ' + listComics[i].autor + '</h2><P id="descrip" class="descripcion">' + listComics[i].descripcion + '</p><button  class="button fit " onclick="javascript:mostrar(' +i+ ')" data-poptrox="">Detalles</button></div></div>');
+		    		$("#thumbnails").append('<div class="box" id="' + i + '"><a href="" class="image fit"><img id="image"src=" ' + listComics[i].url + ' " alt="" /></a><div class="inner"><h4 id="nombre">' + listComics[i].nombre + '</h4><h4 id="autor">Autor: ' + listComics[i].autor + '</h2><P id="descrip" class="descripcion">' + listComics[i].descripcion + '</p><button  class="button fit " onclick="javascript:mostrar(' +i+ ')" data-poptrox="">Detalles</button></div></div>');
 			}    
 		});
 		var mozillaPresente = false,
@@ -82,8 +82,8 @@
 				
 			<nav>
 				<ul>
-					<li><a href="">Ingresar</a></li>
-					<li><a href="Registro.html">Registro</a></li>	
+					<li><a href="">Catalogo</a></li>
+					<li><a onclick="salir()">Cerrar sesion</a></li>	
 				</ul>
 			</nav>		
 		</div>
@@ -96,6 +96,12 @@
 			
 			<div class="fondo-login">
 				<div class="login-page" id="cont-cat">
+					<dic class="divbuscador">
+						<label>Buscar por nombre:</label>
+						<input type="text" class="inputBuscar" id="inputBuscar" name="inputBuscar" value="" placeholder="">
+						<button type="" class="b1" onclick="buscarXnombre()">Buscar</button>
+						<button type="" class="b1" onclick="Limpiarbusqueda()">Limpiar</button>
+					</dic>	
 
 					<div class="thumbnails" id="thumbnails">
 

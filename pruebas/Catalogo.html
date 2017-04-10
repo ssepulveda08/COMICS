@@ -10,20 +10,25 @@
 	<link rel="stylesheet" type="text/css" href="css/catalogo.css">
 
 	<script src='JS/jquery-3.2.0.min.JS'></script>
-	
+	<script src="js/Comics.js"></script>
 	<script src="js/validarSession.js"></script>
 	<script  type="text/javascript">
 
-		var iniciar = new Validar_user();
 
-		var listComics = new getComics(); 
+
+		var iniciar = new Validar_admin();
+	    var iniciar = new Validar_user();
+
+		console.log(iniciar);
+
+		var listComics = JSON.parse(localStorage.getItem("Aproductos"));
 		console.log(Math.ceil(listComics.length/3));
 
 		$(document).ready(function(){
 		    console.log("cargo")
 		    for(var i = 0; i<listComics.length;i++){
 		    	
-		    		$("#thumbnails").append('<div class="box" id="' + i + '"><a href="" class="image fit"><img id="image"src=" ' + listComics[i].url + ' " alt="" /></a><div class="inner"><h3 id="nombre">' + listComics[i].nombre + '</h3><h2 id="autor">Autor: ' + listComics[i].autor + '</h2><P id="descrip" class="descripcion">' + listComics[i].descripcion + '</p><button  class="button fit " onclick="javascript:mostrar(' +i+ ')" data-poptrox="">Detalles</button></div></div>');
+		    		$("#thumbnails").append('<div class="box" id="' + i + '"><a href="" class="image fit"><img id="image"src=" ' + listComics[i].url + ' " alt="" /></a><div class="inner"><h4 id="nombre">' + listComics[i].nombre + '</h4><h4 id="autor">Autor: ' + listComics[i].autor + '</h4><P id="descrip" class="descripcion">' + listComics[i].descripcion + '</p><button  class="button fit " onclick="javascript:mostrar(' +i+ ')" data-poptrox="">Detalles</button><button  class="button fit " onclick="javascript:Editar('+i+')" data-poptrox="">Editar</button></div></div>');
 			}    
 		});
 		var mozillaPresente = false,
@@ -63,9 +68,24 @@
 				        }
 				        });         
 				    }
+				    function Editar(e){
+				    	sessionStorage.setItem("idComic", e);
+				    	location.href="Editar.html";
+				    }
+
 				    function salir(){
 				    	var salir = cerrarSesion();
 				    }
+
+				    function buscarXnombre(){
+				    	var nom = document.getElementById("inputBuscar").value;
+				    	//document.getElementById('thumbnails').style.display = 'block';
+				    	//document.getElementById('busqueda').style.display = 'none';
+				    }
+				    function Limpiarbusqueda(){
+
+				    }
+
 				    $("a.mostrarmodal").click(mostrar);
 				    $("a.cerrarmodal").click(ocultar);
 		
@@ -81,15 +101,29 @@
 				
 			<nav>
 				<ul>
-					<li><a onclick="javascript:salir()">Salir</a></li>
+					<li><a href="admin.html">New Comics</a></li>
+					<li><a href="home.html">Catalogo</a></li>
+					<li><a onclick="salir()">Cerrar sesion</a></li>	
 				</ul>
 			</nav>		
 		</div>
+
 		<section>
+		<div class="divisor">
+		
+		</div>
 
 			
 			<div class="fondo-login">
+				
 				<div class="login-page" id="cont-cat">
+
+					<dic class="divbuscador">
+						<label>Buscar por nombre:</label>
+						<input type="text" class="inputBuscar" id="inputBuscar" name="inputBuscar" value="" placeholder="">
+						<button type="" class="b1" onclick="buscarXnombre()">Buscar</button>
+						<button type="" class="b1" onclick="Limpiarbusqueda()">Limpiar</button>
+					</dic>	
 
 					<div class="thumbnails" id="thumbnails">
 

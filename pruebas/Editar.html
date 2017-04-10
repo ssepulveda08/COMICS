@@ -15,20 +15,40 @@
 	    <script type="text/javascript">
 
 	    var iniciar = new Validar_admin();
-	    var iniciar = new Validar_user();
+	    var iniciar2 = new Validar_user();
+	    //var iniciar3 = new val_selecComic();
 
 
-			function RegistrarComic() {
+	    		var id = sessionStorage.getItem("idComic");
+	    		var comicArray =JSON.parse(localStorage.getItem("Aproductos"));
+	    		$(document).ready(function(){
+
+	    		console.log(comicArray[id]);
+	    			document.getElementById("nombre").value = comicArray[id].nombre;
+	    			document.getElementById("autor").value = comicArray[id].autor;
+	    			document.getElementById("fecha").value = comicArray[id].fecha;
+	    			document.getElementById("ruta").value = comicArray[id].url;
+	    			document.getElementById("descript").value = comicArray[id].descripcion;
+
+	    		});
+
+	    		 
+	    		 
+
+
+			function Actualizar() {
+
+				var id = sessionStorage.getItem("idComic");
 				var pnombre = (document.getElementById("nombre").value);
 				var pautor = (document.getElementById("autor").value);
 				var pfecha = (document.getElementById("fecha").value);
 				var pruta = (document.getElementById("ruta").value);
 				var pdescrip = (document.getElementById("descript").value);
 				
-				var comic = new NewComic(pnombre,pautor,pfecha,pdescrip,pruta);
-				alert("Se creo el Comic Exitosamente.");
-
-				document.getElementById("newcomic").reset();
+				var comic = new UpdateComic(pnombre,pautor,pfecha,pdescrip,pruta,id);
+				alert("Se Actualizo el Comic Exitosamente.");
+				location.href="catalogo.html";
+				
 
 			}
 			function salir(){
@@ -60,17 +80,16 @@
 		<div class="fondo-login">
 			<div class="login-page">
 		  		<div class="form">
-		  			<h1>New Comic</h1>
-		    		<form class="register-form" id="newcomic" action="javascript:RegistrarComic()">
+		  			<h1>Actualizar Comic</h1>
+		    		<form class="register-form" id="updateComic" action="javascript:Actualizar()">
 
-				      <input type="text" id="nombre" required placeholder="Nombre"/>
+				      <input type="text" id="nombre" value=""/>
 				      <input type="text" id="autor" required  placeholder="Autor del Comic"/>
 				      <input type="text" id="fecha" required placeholder="Fecha de publicacion "/>
 				      <input type="text" id="ruta" required placeholder="Ruta de la imagen"/>
 				      <textarea id="descript" idname="descript" rows="10" cols="40">Descripcion 
-				      E.j:
-				      Labeled "The Mighty Pretenders" by an unforgiving public, Captain America redoubles his efforts to revive the Avengers' reputation - only to face an unbeatable foe.</textarea>
-				      <button>Crear</button>
+				      </textarea>
+				      <button>Actualizar</button>
 				    </form>
 				</div>
 			</div>		

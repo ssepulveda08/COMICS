@@ -28,6 +28,12 @@ function Validar_user () {
 	
 }
 
+function val_selecComic(){
+	if(sessionStorage.getItem("idComic")){
+			location.href="catalogo.html";
+	}
+}
+
 function cerrarSesion() {
 		sessionStorage.setItem("Nombreuser", null);
 	    sessionStorage.setItem("Roluser", null);
